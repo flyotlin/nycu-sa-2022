@@ -29,8 +29,6 @@ const requestListener = function (req, res) {
             res.end(message);
         });
     });
-
-    // res.end(`{"message": "I'am healthy! @${epoch}"}`);
 };
 
 const server = http.createServer(requestListener);
