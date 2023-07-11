@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# revoke certbot TLS certificate for domain
+echo "y" > certbot revoke --cert-name "$DOMAIN_NAME"
+
+# remove modified nginx conf
+BASE_DIR=/home/judge/hw4/preflight
+NGINX_DIR=/usr/local/etc/nginx
+
+rm -rf "$NGINX_DIR"/sites/
+rm $NGINX_DIR"/nginx.conf
+cp "$NGINX_DIR"/nginx.conf-dist "$NGINX_DIR"/nginx.conf
+
+# stop nginx
+service nginx stop

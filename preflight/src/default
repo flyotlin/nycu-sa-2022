@@ -1,0 +1,14 @@
+server {
+    listen 80;
+    listen 443 ssl;
+    server_name my-template-domain-name;
+
+    location / {
+        root   /usr/local/www/nginx;
+        index  index.html index.htm;
+    }
+
+    if ($scheme = http) {
+        return 302 302 https://$host$request_uri;
+    }
+}
